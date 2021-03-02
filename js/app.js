@@ -1,20 +1,23 @@
 
-	const app1 = Vue.createApp({
-		data(){
-			return{
-				users: [
-					{id:1, name: 'Tamer'},
-					{id:2, name: 'Atahan'},
-					{id:3, name: 'Ece'},
-					{id:4, name: 'Teoman'}
-				]
-			}
-		}
+	const Home = {
+		template: '<div>Home</div>'
+	}
+	const About = {
+		template: '<div>About</div>'
+	}
+	
+	const routes = [
+		{ path: '/', component: Home },
+		{ path: '/about', component: About },
+	]
+	
+	const router = VueRouter.createRouter({
+		history: VueRouter.createWebHashHistory(),
+		routes
 	})
 	
-	app1.component('list-item',{
-		props: ['name'],
-		template: '<li>{{ name }}</li>'
-	})
+	const app1 = Vue.createApp({})
 	
-	const vm1 = app1.mount('#app1');
+	app1.use(router)
+
+	app1.mount('#app1')
